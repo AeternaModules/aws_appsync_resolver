@@ -12,7 +12,7 @@ output "appsync_resolvers_arn" {
 }
 output "appsync_resolvers_caching_config" {
   description = "Map of caching_config values across all appsync_resolvers, keyed the same as var.appsync_resolvers"
-  value       = { for k, v in aws_appsync_resolver.appsync_resolvers : k => v.caching_config if v.caching_config != null && length(v.caching_config) > 0 }
+  value       = { for k, v in aws_appsync_resolver.appsync_resolvers : k => one(v.caching_config) if v.caching_config != null && length(v.caching_config) > 0 }
 }
 output "appsync_resolvers_code" {
   description = "Map of code values across all appsync_resolvers, keyed the same as var.appsync_resolvers"
@@ -36,7 +36,7 @@ output "appsync_resolvers_max_batch_size" {
 }
 output "appsync_resolvers_pipeline_config" {
   description = "Map of pipeline_config values across all appsync_resolvers, keyed the same as var.appsync_resolvers"
-  value       = { for k, v in aws_appsync_resolver.appsync_resolvers : k => v.pipeline_config if v.pipeline_config != null && length(v.pipeline_config) > 0 }
+  value       = { for k, v in aws_appsync_resolver.appsync_resolvers : k => one(v.pipeline_config) if v.pipeline_config != null && length(v.pipeline_config) > 0 }
 }
 output "appsync_resolvers_region" {
   description = "Map of region values across all appsync_resolvers, keyed the same as var.appsync_resolvers"
@@ -52,11 +52,11 @@ output "appsync_resolvers_response_template" {
 }
 output "appsync_resolvers_runtime" {
   description = "Map of runtime values across all appsync_resolvers, keyed the same as var.appsync_resolvers"
-  value       = { for k, v in aws_appsync_resolver.appsync_resolvers : k => v.runtime if v.runtime != null && length(v.runtime) > 0 }
+  value       = { for k, v in aws_appsync_resolver.appsync_resolvers : k => one(v.runtime) if v.runtime != null && length(v.runtime) > 0 }
 }
 output "appsync_resolvers_sync_config" {
   description = "Map of sync_config values across all appsync_resolvers, keyed the same as var.appsync_resolvers"
-  value       = { for k, v in aws_appsync_resolver.appsync_resolvers : k => v.sync_config if v.sync_config != null && length(v.sync_config) > 0 }
+  value       = { for k, v in aws_appsync_resolver.appsync_resolvers : k => one(v.sync_config) if v.sync_config != null && length(v.sync_config) > 0 }
 }
 output "appsync_resolvers_type" {
   description = "Map of type values across all appsync_resolvers, keyed the same as var.appsync_resolvers"
